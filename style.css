@@ -1,0 +1,50 @@
+body{
+    background-color: rgb(223, 221, 217);
+    background: linear-gradient(violet, red, yellow, green,  lightskyblue 69%);
+    height: 100vh;
+}
+header{
+    display: flex;
+    justify-content: center;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+       
+    }
+    
+    form {
+        width: 30%;
+        background-color: rgb(153, 158, 159);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2%;
+        gap:3%;
+    }
+    
+    input {
+        border: none;
+        padding: 1.5%;        
+        font-size: 1rem;
+        border-radius: 20px;
+        margin-bottom: 0.5rem;
+        height: 2rem;
+        width: 80%;
+    }
+    
+    button {
+        height: 3rem;
+        width: 60%;
+        background-image: linear-gradient( #4F58FD, #149BF3 99%);
+        border: none;
+        border-radius: 5px;
+        color: whitesmoke;
+        font-size: 1.5rem;
+    }
+    
+    button:hover {
+        box-shadow: 5px 10px 10px lightskyblue;    
+        cursor: pointer;
+    }
