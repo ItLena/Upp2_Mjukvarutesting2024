@@ -17,5 +17,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //Endpoints 
 app.get("", (req,res)=>{
-    console.log("Hello world")
+    //console.log("Hello world")
+    res.sendFile("login.html", {root: __dirname})
+})
+
+app.get("/register", (req,res)=>{    
+    res.sendFile("register.html", {root: __dirname})
+})
+
+app.get("/user", (req,res)=>{    
+    res.sendFile("user.html", {root: __dirname})
 })

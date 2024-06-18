@@ -1,6 +1,6 @@
 body{
     background-color: rgb(223, 221, 217);
-    background: linear-gradient(violet, red, yellow, green,  lightskyblue 69%);
+    background: linear-gradient(90deg, rgba(196,106,212,0.5) 20%, rgba(29,252,253,0.5) 50%, rgba(229,252,69,0.5) 100%);
     height: 100vh;
 }
 header{
@@ -15,7 +15,7 @@ header{
     
     form {
         width: 30%;
-        background-color: rgb(153, 158, 159);
+        background-color: rgb(214, 217, 218);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -35,13 +35,13 @@ header{
     }
     
     button {
-        height: 3rem;
         width: 60%;
         background-image: linear-gradient( #4F58FD, #149BF3 99%);
         border: none;
-        border-radius: 5px;
+        border-radius: 20px;
         color: whitesmoke;
         font-size: 1.5rem;
+        padding: 0.5rem;
     }
     
     button:hover {
