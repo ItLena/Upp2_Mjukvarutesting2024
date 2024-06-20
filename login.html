@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="./userManager.js" referrerpolicy="same-origin"></script>
     <title>Login</title>
 </head>
 <body>
@@ -11,12 +12,13 @@
         <h1>Login Page</h1>
     </header>
     <div class="container">
-        <form action="get">
-            <input type="text" name="email" id="email" placeholder="Enter your email">
+        <form method="get">
+            <input type="text" name="username" id="username" placeholder="Enter your name">
             <input type="password" name="password" id="password" placeholder="Enter your password">
-            <button type="submit" id="btnSubmit">Login</button>
-            <p><a href="/register">Sign in</a></p>
+            <button type="submit" id="btn">Login</button>
+                   
         </form>        
     </div>
+   
 </body>
 </html>

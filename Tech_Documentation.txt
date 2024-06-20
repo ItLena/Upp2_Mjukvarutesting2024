@@ -15,6 +15,7 @@ npm init -y
         }
 
 - Install Cypress for test  // npm install --save-dev cypress 
+- Install axios for DB fetching //npm i axios
 
 
 3. Create i root a file .gitignore 
