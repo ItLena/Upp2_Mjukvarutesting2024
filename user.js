@@ -7,6 +7,9 @@ class User {
     getUser() {
       return this.username, this.password;
     }
+    getUserName() {
+      return this.username;
+    }
   
     
   }

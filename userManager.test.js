@@ -13,34 +13,36 @@ describe("UserManager", () => {
     })
 
     describe('createUser', () => {
-        it('1. Ska skapa en ny användare och spara den i databasen', () => {
+        it('1. Ska skapa en ny användare och kontrollerar att den sparas i databasen', () => {
           const username = 'jon';
           const password = '123';
     
           userManager.createUser(username, password);
-    
-          const savedUser = mockUserDB.getUser(username);
 
-          //expect(savedUser).toEqual("123", "jon");
+
+          const savedUser = userManager.findUserByName(username);
+          // console.log("Test: savedUser:",savedUser);
+
           expect(savedUser).toEqual(new User(username, password));
         });
       });
 
       describe('getUser', () => {
-        it('Ska hämta en användare från databasen baserat på användarnamn', () => {
-          const username = 'jon';
-          const password = '123';
+        it('2. Ska hämta en användare från databasen baserat på användarnamn', () => {
+          const username = 'Per';
+          const password = '456';
           const user = new User(username, password);
     
-          mockUserDatabase.users[username] = user;
+          //mockUserDatabase.users[username] = user;
     
-          const retrievedUser = userManager.getUser(username);
+          const retrievedUser = userManager.findUserByName(username);
+          console.log("Test: retrievedUser:",retrievedUser);
           expect(retrievedUser).toEqual(user);
         });
     
-        it('ska returnera null om användaren inte hittas', () => {
+        it('3. Ska returnera null om användaren inte hittas', () => {
           const username = 'doe';
-          const retrievedUser = userManager.getUser(username);
+          const retrievedUser = userManager.findUserByName(username);
           expect(retrievedUser).toBeNull();
         });
       });

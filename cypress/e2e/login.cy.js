@@ -9,7 +9,7 @@ beforeEach(()=>{
 
     cy.get("#password").type(password)
 
-    cy.get("#btn").click()
+    cy.get("button").click()
   })
   
   

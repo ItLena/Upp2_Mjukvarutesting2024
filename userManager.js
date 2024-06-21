@@ -9,7 +9,7 @@ class UserManager {
     
      login(username, password) {
         console.log("Jag är inloggad")
-        const user =  this.userDB.getUser(username, password);
+        const user =  this.userDB.getUserByName(username);
         if (user.username === "jon" && user.password === "123") {
             this.loggedUser = user;
             location.href = "/user"
@@ -23,6 +23,17 @@ class UserManager {
     createUser(username, password) {
         const newUser = new User(username, password);
         this.userDB.saveUser(newUser);
+    }
+
+    findUserByName(username){
+        let returnUser = this.userDB.getUserByName(username)
+        if(!returnUser){
+            returnUser = null;
+            console.log("UserManager: If undefined returnUser:",returnUser);
+        }
+        //console.log("UserManager: returnUser:",returnUser);
+
+        return returnUser;
     }
 
     getLoggedUser() {
