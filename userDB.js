@@ -1,17 +1,16 @@
 class UserDB {
 
-    constructor(axios) {
-        this.axios = axios
+    constructor() {
+       this.users = {}; // Mockad databas
     }
 
-    saveUser(username, password) {
-        let resp = this.axios.post(" ")
-        return resp.data
+    saveUser(user) {
+        this.users[user.getUser()] = user;
+        return user        
     }
 
-    getUser(username, password) {
-        let resp = this.axios.get(" ")
-        return resp.data
+    getUser(username) {
+        return this.users[username];        
     }
 
 }

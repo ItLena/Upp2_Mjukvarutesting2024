@@ -1,11 +1,21 @@
 const bodyParser = require("body-parser");
 const express = require("express");
-const fs = require("fs"); 
 
 const app = new express();
 const portNr = 8080;
-const filePath = "./data.json"
 
+
+// DB hardcoded
+const users = {
+    user1: {
+      username: 'jon',
+      password: '123',
+    },
+    user2: {
+      username: 'doe',
+      password: '456',
+    },
+  };
 app.use(express.static('./'));
 
 // Start server
@@ -28,42 +38,33 @@ app.get("/login", (req,res)=>{
 })
 
 app.get("/user", (req,res)=>{  
-    if(req.loggedUser) {
-      res.sendFile("user.html", {root: __dirname})  
-    } 
-    else{
-        res.redirect("");
-    }
+    if (userManager.getLoggedUser()) {
+        res.send("Welcome to user page");
+      } else {
+        res.send("Not authorized")
+      }
     
 })
 
 // Register func
-app.post("", (req, res) => {
-    const data = req.body;
-    const jsonStr = JSON.stringify(data, null, 2)
-    fs.writeFile(filePath, jsonStr, (err) => {
-        if (err) console.log(err)
-    })
-
-    //Return data to sender
-    res.send(jsonStr)
+app.post("/register", bodyParser.json(), (req, res) => {
+    const { username, password } = req.body;
+    if (users[username]) {
+        res.send("User name is already taken");
+        return;
+      }
+    
+      userManager.createUser(username, password);
+      res.send("User have been registred");
 })
 
 //Login func 
-app.post("/getlog", bodyParser.json(), (req, res) =>{
-      
-    fs.readFile(filePath, 'utf-8', (err, data) => {
-            if (err) console.log(err) 
-          
-            res.send(JSON.stringify(data, null, 2))
-        })      
-    if(data){ 
-        res.send("Login is success")  
-        console.log("data rätt", data) 
-    }   
-    else{
-        res.send("Wrong user name or password")
-        console.log("data fel", data) 
-    }
+app.post("/login", bodyParser.json(), (req, res) =>{
+    const { username, password } = req.body;     
+    if (userManager.login(username, password)) {
+        res.send('You are logged in');
+      } else {
+        res.send('Wrong user name or pasword');
+      }
     
 })

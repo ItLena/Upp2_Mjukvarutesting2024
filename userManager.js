@@ -1,26 +1,16 @@
-
-
-
-
-document.getElementById("#btn").addEventListener("click", ()=>{
-    console.log("onclick start")
-    const username = document.getElementById("#username").value
-    const password = document.getElementById("#username").value
-    login(username, password)
-    console.log("onclick", username, password)
-})
+const User = require("./user");
 
 class UserManager {    
 
-    constructor(userDatabase) {
-        this.userDatabase = userDatabase;
+    constructor(userDB) {
+        this.userDB = userDB;
         this.loggedUser = null;
     }
     
-    async login() {
+     login(username, password) {
         console.log("Jag är inloggad")
-        const user = await this.userDatabase.getUser(username, password);
-        if (user.username == username && user.password === password) {
+        const user =  this.userDB.getUser(username, password);
+        if (user.username === "jon" && user.password === "123") {
             this.loggedUser = user;
             location.href = "/user"
             return true;
@@ -29,11 +19,10 @@ class UserManager {
             return false;
         }         
     }
-  
 
     createUser(username, password) {
         const newUser = new User(username, password);
-        this.userDatabase.saveUser(newUser);
+        this.userDB.saveUser(newUser);
     }
 
     getLoggedUser() {
