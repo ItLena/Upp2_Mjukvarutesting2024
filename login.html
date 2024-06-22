@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="~/favicon.ico">
+    <!-- <link rel="shortcut icon" href="~/favicon.ico"> -->
     <script type="module" src="userManager.js" referrerpolicy="same-origin"></script>
     <title>Login</title>
-    <p id="output"></p>
 </head>
+
 <body>
     <header>
-        <h1>Login Page</h1>
+        <h1 id="LoginPage">Login Page</h1>
     </header>
     <div class="container">
         <form method="post">
             <input type="text" name="username" id="username" placeholder="Enter your name" required>
             <input type="password" name="password" id="password" placeholder="Enter your password" required>
-            <button type="submit" id="btn">Login</button>                
-        </form>        
+            <button type="submit" id="btn">Login</button>
+        </form>
     </div>
-   
 </body>
 </html>
