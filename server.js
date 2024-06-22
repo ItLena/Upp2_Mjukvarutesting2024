@@ -1,5 +1,6 @@
 const bodyParser = require("body-parser");
 const express = require("express");
+
 const impUserManager = require("./userManager.js");
 const userManager = new impUserManager();
 const app = new express();
@@ -28,13 +29,9 @@ app.listen(portNr, () =>{
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-//Routing 
-app.get('/favicon.ico', (req, res) => {
-  res.sendFile("favicon.ico", {root: __dirname});
-});
+//Routing
 
-app.get("", (req,res)=>{
-    //console.log("Hello world")
+app.get("", (req,res)=>{   
     res.sendFile("register.html", {root: __dirname})
 })
 
@@ -44,12 +41,6 @@ app.get("/login", (req,res)=>{
 
 app.get("/user", (req,res)=>{ 
   res.sendFile("user.html", {root: __dirname}) 
-    // if (userManager.getLoggedUser()) {
-
-    //     res.send("Welcome to user page");
-    //   } else {
-    //     res.send("Not authorized")
-    //   }
     
 })
 
@@ -62,7 +53,7 @@ app.post("/", bodyParser.json(), (req, res) => {
       }
     
       userManager.createUser(username, password);
-      res.send("User have been registred");
+      res.sendFile("login.html", {root: __dirname})
 })
 
 //Login func 
@@ -71,9 +62,9 @@ app.post("/login", bodyParser.json(), (req, res) =>{
     //res.send('You are logged in'); 
     // if (userManager.login(username, password))  
     if (userManager.login(username, password) ){
-        res.send('You are logged in');
+        //res.send('You are logged in');
+        res.sendFile("user.html", {root: __dirname})
       } else {
         res.send('Wrong user name or pasword');
-      }
-    
+      }    
 })
