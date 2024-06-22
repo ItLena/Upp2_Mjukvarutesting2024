@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="userManager.js" referrerpolicy="same-origin"></script>
+    <link rel="shortcut icon" href="~/favicon.ico">
+    <script type="module" src="userManager.js" referrerpolicy="same-origin"></script>
     <title>Login</title>
+    <p id="output"></p>
 </head>
 <body>
     <header>
@@ -15,7 +17,7 @@
         <form method="post">
             <input type="text" name="username" id="username" placeholder="Enter your name" required>
             <input type="password" name="password" id="password" placeholder="Enter your password" required>
-            <button type="submit">Login</button>                   
+            <button type="submit" id="btn">Login</button>                
         </form>        
     </div>
    

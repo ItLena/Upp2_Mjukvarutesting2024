@@ -45,6 +45,14 @@ describe("UserManager", () => {
           const retrievedUser = userManager.findUserByName(username);
           expect(retrievedUser).toBeNull();
         });
+
+        it('4. Prova att logga in', () => {
+          const username = 'Per';
+          const password = '456';
+          const user = new User(username, password);
+          const loggedInUser = userManager.login(username, password);
+          expect(loggedInUser).toBeTruthy();
+        });
       });
     
 })

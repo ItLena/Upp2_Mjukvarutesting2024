@@ -5,11 +5,13 @@ beforeEach(()=>{
 })
   
   it('Form inputs is correct types', ()=>{
-    cy.get("#username").type(text)
+    cy.get("#username").type("Per")
+    console.log("Testat user")
+    cy.get("#password").type("456")
 
-    cy.get("#password").type(password)
+    cy.get("#btn").click()
 
-    cy.get("button").click()
+    cy.get("#output").should("contains.text", `You are logged in`)
   })
   
   

@@ -1,28 +1,32 @@
-const User = require("./user");
+const user = require("./user");
+const impUserDB = require("./userDB");
+
+//const user = new impUser();
 
 class UserManager {    
 
-    constructor(userDB) {
-        this.userDB = userDB;
+    constructor() {
+        this.userDB = new impUserDB;
         this.loggedUser = null;
     }
     
-     login(username, password) {
-        console.log("Jag är inloggad")
+     login(username, password){
+        console.log("Jag försöker logga in")
         const user =  this.userDB.getUserByName(username);
-        if (user.username === "jon" && user.password === "123") {
-            this.loggedUser = user;
-            location.href = "/user"
+    
+        if (user.username === username && user.password === password) {
+            console.log("Jag är inloggad")
             return true;
         } else {
-            location.href = ""
             return false;
         }         
     }
 
     createUser(username, password) {
-        const newUser = new User(username, password);
-        this.userDB.saveUser(newUser);
+        const newUser = new user(username, password);
+        //this.userDB.saveUser(newUser);
+        this.userDB.saveUser(newUser)
+
     }
 
     findUserByName(username){
